@@ -1,0 +1,15 @@
+一. 启动Server
+二. 启动Client, 会弹出一个java客户端界面.
+1. 点connect
+输入Server信息:
+    IP:    localhost
+    端口： 12345
+    Topic： 2
+    QOS： 选择 1
+点确定链接. 可以看到server控制台输出相关链接逻辑log
+2. 在客户端上面画图，每次画图都会触发事件并发送给Server.
+
+3. server控制台输出接收到事件的log.
+
+4. 在客户端上点disconnect.
+server控制台输出 unregister 以及 disconnect 信息.

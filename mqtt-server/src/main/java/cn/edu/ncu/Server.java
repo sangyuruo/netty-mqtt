@@ -16,6 +16,8 @@ import io.netty.handler.codec.mqtt.MqttDecoder;
 import io.netty.handler.codec.mqtt.MqttEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import org.apache.commons.cli.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -24,6 +26,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class Server {
+    static Logger logger = LoggerFactory.getLogger(Server.class);
     class CliArgs{
         String host;
         String port;
@@ -32,6 +35,7 @@ public class Server {
     }
 
     public static void main(String[] args){
+        logger.info("main start");
         Server server = new Server();
         CliArgs cliArgs = null;
         try {

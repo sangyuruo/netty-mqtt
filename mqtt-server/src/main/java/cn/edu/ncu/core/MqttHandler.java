@@ -42,29 +42,36 @@ public class MqttHandler extends ChannelInboundHandlerAdapter {
 
         switch (message.fixedHeader().messageType()){
             case CONNECT:
+                logger.info("CONNECT");
                 MqttConnAckMessage ackMessage = onConnect((MqttConnectMessage) message, ctx);
                 ctx.writeAndFlush(ackMessage);
                 break;
             case SUBSCRIBE:
+                logger.info("SUBSCRIBE");
                 MqttSubAckMessage subAckMessage = onSubscribe((MqttSubscribeMessage)message, ctx);
                 ctx.writeAndFlush(subAckMessage);
                 break;
             case UNSUBSCRIBE:
+                logger.info("UNSUBSCRIBE");
                 MqttUnsubAckMessage unsubAckMessage = onUnSubscribe((MqttUnsubscribeMessage)message, ctx);
                 ctx.writeAndFlush(unsubAckMessage);
                 break;
             case PINGREQ:
+                logger.info("PINGREQ");
                 MqttMessage pingResp = onPing();
                 ctx.writeAndFlush(pingResp);
                 break;
             case PUBLISH:
+                logger.info("PUBLISH");
                 MqttPubAckMessage pubAckMessage = onPublish((MqttPublishMessage)message, ctx);
                 ctx.writeAndFlush(pubAckMessage);
                 break;
             case PUBACK:
+                logger.info("PUBACK");
                 onPuback((MqttPubAckMessage)message, ctx);
                 break;
             case DISCONNECT:
+                logger.info("DISCONNECT");
                 onDisconnect(ctx);
             default:
                 System.out.println("not this message");
